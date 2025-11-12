@@ -67,90 +67,113 @@
   transform: scale(1.2);
 }
 
-
-/* ===== COVER HERO SECTION ===== */
+/* ===== COVER HERO SECTION WITH ANIMATION ===== */
 .cover-hero {
   position: relative;
   height: 100vh; /* full screen */
-background-color: #222831; /* dark gray */
+  background-color: rgb(72, 206, 250);
+  background-size: cover;
+  background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  animation: fadeIn 1.5s forwards; /* fade in on load */
+  overflow: hidden;
+  animation: zoomBackground 25s ease-in-out infinite alternate;
 }
 
+/* Dark overlay for readability */
+.cover-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Content container */
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  color: rgb(8, 7, 7);
+  text-align: center;
+  padding: 1rem;
+  animation: fadeIn 2s ease forwards;
+}
+
+/* Headings and text */
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+  animation: floatText 5s ease-in-out infinite alternate;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-inline: auto;
+  color: #070707;
+  animation: floatText 6s ease-in-out infinite alternate;
+}
+
+/* Button design */
+.hero-content .btn {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  background: #007bff;
+  color: rgb(5, 5, 5);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.hero-content .btn:hover {
+  background: #0056b3;
+  transform: translateY(-3px);
+}
+
+/* Background zoom animation */
+@keyframes zoomBackground {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* Text float animation */
+@keyframes floatText {
+  from { transform: translateY(0px); }
+  to { transform: translateY(-10px); }
+}
+
+/* Fade-in effect */
 @keyframes fadeIn {
-  to {
-    opacity: 1;
+  0% { opacity: 0; transform: translateY(40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive design for phones */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .hero-content .btn {
+    padding: 0.8rem 1.5rem;
   }
 }
 
-.cover-hero .hero-overlay {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-color: rgba(0,0,0,0.5); /* dark overlay for text readability */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.cover-hero .hero-content {
-  color: #090909;
-  max-width: 800px;
-  padding: 1rem;
-}
-
-.cover-hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-
-.cover-hero p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-}
-
-.cover-hero .btn {
-  padding: 0.8rem 2rem;
-  background-color: #007BFF;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,123,255,0.4);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.cover-hero .btn::after {
-  content: '';
-  position: absolute;
-  width: 100%; height: 0;
-  top: 0; left: 0;
-  background: rgba(255,255,255,0.2);
-  transition: all 0.3s ease;
-  border-radius: 10px;
-}
-
-.cover-hero .btn:hover {
-  background-color: #0056b3;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0,123,255,0.5);
-}
-
-.cover-hero .btn:hover::after {
-  height: 100%;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .cover-hero h1 { font-size: 2rem; }
-  .cover-hero p { font-size: 1rem; }
-}
 
 
 * {
