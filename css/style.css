@@ -1,3 +1,94 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Reset some defaults and make sizing easier */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+.home-section,
+.services-section,
+.contact-section {
+  padding: 2rem;
+}
+
+.services-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* allows items to wrap on small screens */
+  gap: 1rem;
+}
+
+.service-item {
+  flex: 1 1 200px; /* grow, shrink, minimum width */
+  background: #f8f8f8;
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+  .services-list {
+    flex-direction: column; /* stack items vertically on mobile */
+  }
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Mobile Nav */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+.btn {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .btn {
+    width: 80%; /* fill width on small screens */
+    text-align: center;
+    padding: 0.7rem 1rem;
+  }
+}
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+html {
+  scroll-behavior: smooth;
+}
+
 .contact-section {
   text-align: center;
   padding: 3rem 1rem;
